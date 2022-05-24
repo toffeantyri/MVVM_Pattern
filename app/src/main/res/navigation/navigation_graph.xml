@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/navigation_graph" app:startDestination="@id/startFragment">
-
+            android:id="@+id/navigation_graph" app:startDestination="@id/mainFragment">
+    <fragment android:id="@+id/mainFragment" android:name="ru.test.mvvmlearning.screens.MainFragment"
+              android:label="MainFragment">
+        <action android:id="@+id/action_mainFragment_to_addNewNote" app:destination="@id/addNewNote"/>
+        <action android:id="@+id/action_mainFragment_to_noteFragment" app:destination="@id/noteFragment"/>
+        <action android:id="@+id/action_mainFragment_to_startFragment" app:destination="@id/startFragment"/>
+    </fragment>
     <fragment android:id="@+id/startFragment" android:name="ru.test.mvvmlearning.screens.StartFragment"
               android:label="StartFragment">
         <action android:id="@+id/action_startFragment_to_mainFragment" app:destination="@id/mainFragment"/>
-    </fragment>
-    <fragment android:id="@+id/mainFragment" android:name="ru.test.mvvmlearning.screens.MainFragment"
-              android:label="MainFragment">
-        <action android:id="@+id/action_mainFragment_to_noteFragment" app:destination="@id/noteFragment"/>
-        <action android:id="@+id/action_mainFragment_to_addNewNote" app:destination="@id/addNewNote"/>
-        <action android:id="@+id/action_mainFragment_to_startFragment" app:destination="@id/startFragment"/>
     </fragment>
     <fragment android:id="@+id/addNewNote" android:name="ru.test.mvvmlearning.screens.AddNewNote"
               android:label="AddNewNote">
