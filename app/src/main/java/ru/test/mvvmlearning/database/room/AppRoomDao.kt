@@ -11,9 +11,9 @@ interface AppRoomDao {
     fun getAllNotes(): LiveData<List<AppNote>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(note: AppNote)
+    fun insert(note: AppNote)           //todo suspend
 
     @Delete
-    suspend fun delete(note: AppNote)
+    fun delete(note: AppNote)           //todo suspend
 
 }
