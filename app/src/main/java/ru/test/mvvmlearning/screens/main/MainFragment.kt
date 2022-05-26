@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fragment_add_new_note.*
 import kotlinx.android.synthetic.main.fragment_main.*
 
 import ru.test.mvvmlearning.R
@@ -46,11 +45,12 @@ class MainFragment : Fragment() {
 
         mViewModel = ViewModelProvider(this).get(MainFragmentViewModel::class.java)
 
-        mViewModel.allNotes.observe(this, mObserverList)
         mObserverList = Observer {
             val list = it.asReversed()
             mAdapter.setList(list)
         }
+        mViewModel.allNotes.observe(this, mObserverList)
+
         /*ниже то же самое кратче*/
         /*
         mViewModel.allNotes.observe(this){
@@ -59,7 +59,7 @@ class MainFragment : Fragment() {
         }
         */
         btn_add_new_note.setOnClickListener {
-            APP_ACTIVITY.mNavController.navigate(R.id.action_mainFragment_to_addNewNote)
+            APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_addNewNote)
         }
 
 
@@ -71,4 +71,14 @@ class MainFragment : Fragment() {
         mRecyclerView.adapter = null
     }
 
+
+    companion object {
+        fun clickItem(note: AppNote) {
+            val bundle = Bundle()
+            bundle.putSerializable("note", note)
+            APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_noteFragment, bundle)
+        }
+    }
 }
+
+

@@ -45,7 +45,7 @@ class AddNewNote : Fragment() {
                 showToast(getString(R.string.toast_enter_name))
             } else {
                     mViewModel.insert(AppNote(name = name, text = text)){
-                        APP_ACTIVITY.mNavController.navigate(R.id.action_addNewNote_to_mainFragment)
+                        APP_ACTIVITY.navController.navigate(R.id.action_addNewNote_to_mainFragment)
                     }
             }
         }

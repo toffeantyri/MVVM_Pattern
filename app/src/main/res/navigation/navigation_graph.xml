@@ -16,7 +16,7 @@
               android:label="AddNewNote">
         <action android:id="@+id/action_addNewNote_to_mainFragment" app:destination="@id/mainFragment"/>
     </fragment>
-    <fragment android:id="@+id/noteFragment" android:name="ru.test.mvvmlearning.screens.NoteFragment"
+    <fragment android:id="@+id/noteFragment" android:name="ru.test.mvvmlearning.screens.note.NoteFragment"
               android:label="NoteFragment">
         <action android:id="@+id/action_noteFragment_to_mainFragment" app:destination="@id/mainFragment"/>
     </fragment>
