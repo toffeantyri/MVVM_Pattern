@@ -12,7 +12,7 @@
               android:label="StartFragment">
         <action android:id="@+id/action_startFragment_to_mainFragment" app:destination="@id/mainFragment"/>
     </fragment>
-    <fragment android:id="@+id/addNewNote" android:name="ru.test.mvvmlearning.screens.AddNewNote"
+    <fragment android:id="@+id/addNewNote" android:name="ru.test.mvvmlearning.screens.addnewnote.AddNewNote"
               android:label="AddNewNote">
         <action android:id="@+id/action_addNewNote_to_mainFragment" app:destination="@id/mainFragment"/>
     </fragment>
