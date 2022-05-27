@@ -9,8 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_start.*
 import ru.test.mvvmlearning.R
-import ru.test.mvvmlearning.utilits.APP_ACTIVITY
-import ru.test.mvvmlearning.utilits.TYPE_ROOM
+import ru.test.mvvmlearning.utilits.*
 
 
 class StartFragment : Fragment() {
@@ -41,6 +40,24 @@ class StartFragment : Fragment() {
         btn_room.setOnClickListener {
             mViewModel.initDatabase(TYPE_ROOM) {
                 APP_ACTIVITY.navController.navigate(R.id.action_startFragment_to_mainFragment)
+            }
+        }
+        btn_firebase.setOnClickListener {
+            input_email.visibility = View.VISIBLE
+            input_password.visibility = View.VISIBLE
+            btn_login.visibility = View.VISIBLE
+            btn_login.setOnClickListener {
+                val inputEmail = input_email.text.toString()
+                val inputPassword = input_password.text.toString()
+                if (inputEmail.isNotEmpty() && inputPassword.isNotEmpty()) {
+                    EMAIL = inputEmail
+                    PASSWORD = inputPassword
+                    mViewModel.initDatabase(TYPE_FIREBASE) {
+                        APP_ACTIVITY.navController.navigate(R.id.action_startFragment_to_mainFragment)
+                    }
+                } else {
+                    showToast(getString(R.string.mail_password_error))
+                }
             }
         }
     }

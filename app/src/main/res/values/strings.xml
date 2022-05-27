@@ -8,4 +8,9 @@
     <string name="start_btn_room">ROOM</string>
     <string name="title">Заметки</string>
     <string name="toast_enter_name">Введите имя заметки</string>
+    <string name="start_btn_firebase">Firebase</string>
+    <string name="start_hint_email">email</string>
+    <string name="start_input_password">password</string>
+    <string name="start_btn_login">Login</string>
+    <string name="mail_password_error">Введите пароль и почту</string>
 </resources>

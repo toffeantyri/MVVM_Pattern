@@ -4,9 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import ru.test.mvvmlearning.database.room.AppRoomDatabase
 import ru.test.mvvmlearning.database.room.AppRoomRepository
-import ru.test.mvvmlearning.utilits.APP_ACTIVITY
-import ru.test.mvvmlearning.utilits.REPOSITORY
-import ru.test.mvvmlearning.utilits.TYPE_ROOM
+import ru.test.mvvmlearning.utilits.*
 
 class StartFragmentViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -18,6 +16,9 @@ class StartFragmentViewModel(application: Application) : AndroidViewModel(applic
                 val dao = AppRoomDatabase.getInstance(mContext).getAppRoomDao()
                 REPOSITORY = AppRoomRepository(dao)
                 onSuccess()
+            }
+            TYPE_FIREBASE -> {
+                showToast(TYPE_FIREBASE)
             }
         }
     }
