@@ -39,7 +39,9 @@ class AppFirebaseRepository : DatabaseRepository {
     }
 
     override suspend fun delete(note: AppNote, onSuccess: () -> Unit) {
-
+        RFF_DATABASE.child(note.idFirebase).removeValue()
+            .addOnSuccessListener { onSuccess() }
+            .addOnFailureListener { showToast(it.message.toString()) }
     }
 
     override fun connectToFirebase(onSuccess: () -> Unit, onFail: (String) -> Unit) {
