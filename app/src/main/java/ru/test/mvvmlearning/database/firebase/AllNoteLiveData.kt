@@ -8,12 +8,9 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import ru.test.mvvmlearning.model.AppNote
+import ru.test.mvvmlearning.utilits.RFF_DATABASE
 
 class AllNoteLiveData : LiveData<List<AppNote>>() {
-
-    private val mAuth = FirebaseAuth.getInstance()
-    private val mDatabaseReference = FirebaseDatabase.getInstance().reference
-        .child(mAuth.currentUser?.uid.toString())
 
 
     private val listener = object : ValueEventListener {
@@ -29,12 +26,12 @@ class AllNoteLiveData : LiveData<List<AppNote>>() {
 
     //если Livedata активна (когда фрагмент активен?)
     override fun onActive() {
-        mDatabaseReference.addValueEventListener(listener)
+       RFF_DATABASE.addValueEventListener(listener)
         super.onActive()
     }
 
     override fun onInactive() {
-        mDatabaseReference.removeEventListener(listener)
+        RFF_DATABASE.removeEventListener(listener)
         super.onInactive()
     }
 }

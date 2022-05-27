@@ -1,9 +1,15 @@
 package ru.test.mvvmlearning.utilits
 
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
 import ru.test.mvvmlearning.MainActivity
 import ru.test.mvvmlearning.database.DatabaseRepository
 
 const val TAG = "MyLog"
+
+lateinit var AUTH : FirebaseAuth
+lateinit var CURRENT_ID : String
+lateinit var RFF_DATABASE : DatabaseReference
 
 lateinit var APP_ACTIVITY: MainActivity
 lateinit var REPOSITORY : DatabaseRepository
