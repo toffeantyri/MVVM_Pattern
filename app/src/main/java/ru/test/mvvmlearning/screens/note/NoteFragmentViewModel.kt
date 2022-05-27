@@ -11,11 +11,9 @@ import ru.test.mvvmlearning.utilits.REPOSITORY
 
 class NoteFragmentViewModel(application: Application) : AndroidViewModel(application) {
 
-    fun delete(note: AppNote, onSuccess: () -> Unit) = viewModelScope.launch {
-        withContext(Dispatchers.IO) {
-            REPOSITORY.delete(note) {
-                onSuccess()
-            }
+    fun delete(note: AppNote, onSuccess: () -> Unit) = viewModelScope.launch(Dispatchers.Main) {
+        REPOSITORY.delete(note) {
+            onSuccess()
         }
     }
 }

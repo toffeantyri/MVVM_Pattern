@@ -32,6 +32,7 @@ android {
 }
 
 dependencies {
+    implementation "androidx.legacy:legacy-support-v4:1.0.0"
 
     //firebase
     implementation 'com.google.firebase:firebase-auth:21.0.5'
@@ -54,22 +55,23 @@ dependencies {
 
 
     //room
-    def room_version = "2.4.2"
+    def room_version = "2.2.5"
     implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     //annotationProcessor "androidx.room:room-compiler:$room_version"
 
 
     // optional - RxJava2 support for Room
-    //implementation "androidx.room:room-rxjava2:$room_version"
+    implementation "androidx.room:room-rxjava2:$room_version"
     // optional - RxJava3 support for Room
-    //implementation "androidx.room:room-rxjava3:2.4.2"
+    //implementation "androidx.room:room-rxjava3:$room_version"
     // optional - Guava support for Room, including Optional and ListenableFuture
-    //implementation "androidx.room:room-guava:$room_version"
+    implementation "androidx.room:room-guava:$room_version"
     // optional - Test helpers
-    //estImplementation "androidx.room:room-testing:$room_version"
+    testImplementation "androidx.room:room-testing:$room_version"
     // optional - Paging 3 Integration
-    //implementation "androidx.room:room-paging:2.5.0-alpha01"
+    //implementation "androidx.room:room-paging:$room_version"
 
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -83,8 +85,6 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation 'androidx.fragment:fragment-ktx:1.4.1'
-
-
 
 
 }

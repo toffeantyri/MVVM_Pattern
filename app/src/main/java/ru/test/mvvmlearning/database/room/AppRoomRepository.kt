@@ -14,8 +14,6 @@ class AppRoomRepository(private val appRoomDao: AppRoomDao) : DatabaseRepository
     override suspend fun insert(note: AppNote, onSuccess: () -> Unit) {
         Log.d(TAG, "repo insert")
         appRoomDao.insert(note)
-
-
         onSuccess()
         Log.d(TAG, "repo onSuccess")
     }
@@ -23,5 +21,9 @@ class AppRoomRepository(private val appRoomDao: AppRoomDao) : DatabaseRepository
     override suspend fun delete(note: AppNote, onSuccess: () -> Unit) {
         appRoomDao.delete(note)
         onSuccess()
+    }
+
+    override fun signOutFirebase() {
+        super.signOutFirebase()
     }
 }

@@ -8,4 +8,8 @@ class MainFragmentViewModel(application : Application) : AndroidViewModel(applic
 
     val allNotes = REPOSITORY.allNotes
 
+    fun signOut(){
+        REPOSITORY.signOutFirebase()
+    }
+
 }

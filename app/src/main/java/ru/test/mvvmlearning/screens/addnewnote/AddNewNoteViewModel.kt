@@ -11,13 +11,12 @@ import ru.test.mvvmlearning.utilits.TAG
 
 class AddNewNoteViewModel(application: Application) : AndroidViewModel(application) {
 
-    fun insert(note: AppNote, onSuccess: () -> Unit) = viewModelScope.launch {
-        withContext(Dispatchers.IO) {
-            Log.d(TAG, "vm insert $coroutineContext")
-            REPOSITORY.insert(note) {
-                Log.d(TAG, "vm insert success $coroutineContext")
-                onSuccess()
-            }
+    fun insert(note: AppNote, onSuccess: () -> Unit) = viewModelScope.launch(Dispatchers.Main) {
+        Log.d(TAG, "vm insert $coroutineContext")
+        REPOSITORY.insert(note) {
+            Log.d(TAG, "vm insert success $coroutineContext")
+            onSuccess()
+
         }
     }
 }
