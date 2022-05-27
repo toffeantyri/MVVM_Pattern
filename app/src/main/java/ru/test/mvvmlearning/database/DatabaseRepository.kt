@@ -12,4 +12,8 @@ interface DatabaseRepository {
 
     suspend fun delete(note : AppNote, onSuccess: () -> Unit)
 
+    fun connectToFirebase(onSuccess: () -> Unit, onFail: (String) -> Unit){}
+
+    fun signOutFirebase(){}
+
 }
