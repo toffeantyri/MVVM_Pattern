@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.fragment_main.*
 import ru.test.mvvmlearning.R
 import ru.test.mvvmlearning.model.AppNote
 import ru.test.mvvmlearning.utilits.APP_ACTIVITY
+import ru.test.mvvmlearning.utilits.AppPreference
 
 
 class MainFragment : Fragment() {
@@ -79,6 +80,7 @@ class MainFragment : Fragment() {
         when (item.itemId) {
             R.id.btn_exit -> {
                 mViewModel.signOut()
+                AppPreference.setInitUser(false)
                     APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_startFragment)
 
             }

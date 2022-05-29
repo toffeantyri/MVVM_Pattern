@@ -7,6 +7,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.test.mvvmlearning.utilits.APP_ACTIVITY
+import ru.test.mvvmlearning.utilits.AppPreference
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(mToolbar)
         title = getString(R.string.title)
 
+
+        AppPreference.getPreference(this)
     }
 
 

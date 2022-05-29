@@ -45,14 +45,28 @@ class AppFirebaseRepository : DatabaseRepository {
     }
 
     override fun connectToFirebase(onSuccess: () -> Unit, onFail: (String) -> Unit) {
-        AUTH.signInWithEmailAndPassword(EMAIL, PASSWORD)
-            .addOnSuccessListener { onSuccess() }
-            .addOnFailureListener {
-                AUTH.createUserWithEmailAndPassword(EMAIL, PASSWORD)
-                    .addOnSuccessListener { onSuccess() }
-                    .addOnFailureListener { onFail(it.message.toString()) }
-            }
-        //во избедание дублирования кода
+        if (AppPreference.getInitUser()) {
+            initRefs()
+            onSuccess()
+        } else {
+            AUTH.signInWithEmailAndPassword(EMAIL, PASSWORD)
+                .addOnSuccessListener {
+                    initRefs()
+                    onSuccess()
+                }
+                .addOnFailureListener {
+                    AUTH.createUserWithEmailAndPassword(EMAIL, PASSWORD)
+                        .addOnSuccessListener {
+                            initRefs()
+                            onSuccess()
+                        }
+                        .addOnFailureListener { onFail(it.message.toString()) }
+                }
+        }
+
+    }
+
+    private fun initRefs() {
         CURRENT_ID = AUTH.currentUser?.uid.toString()
         RFF_DATABASE = FirebaseDatabase.getInstance().reference
             .child(CURRENT_ID)
