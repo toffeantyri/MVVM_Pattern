@@ -4,24 +4,52 @@
             android:id="@+id/navigation_graph" app:startDestination="@id/startFragment">
     <fragment android:id="@+id/mainFragment" android:name="ru.test.mvvmlearning.screens.main.MainFragment"
               android:label="MainFragment">
-        <action android:id="@+id/action_mainFragment_to_addNewNote" app:destination="@id/addNewNote"/>
-        <action android:id="@+id/action_mainFragment_to_noteFragment" app:destination="@id/noteFragment"/>
-        <action android:id="@+id/action_mainFragment_to_startFragment" app:destination="@id/startFragment"
-                app:popUpTo="@+id/navigation_graph" app:launchSingleTop="true"/>
+        <action
+            android:id="@+id/action_mainFragment_to_addNewNote"
+            app:destination="@id/addNewNote"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainFragment_to_noteFragment"
+            app:destination="@id/noteFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainFragment_to_startFragment"
+            app:destination="@id/startFragment"
+            app:enterAnim="@anim/slide_right_to_left_enter"
+            app:exitAnim="@anim/slide_right_to_left_out"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/navigation_graph" />
     </fragment>
     <fragment android:id="@+id/startFragment" android:name="ru.test.mvvmlearning.screens.start.StartFragment"
               android:label="StartFragment">
-        <action android:id="@+id/action_startFragment_to_mainFragment" app:destination="@id/mainFragment"
-                app:popUpTo="@+id/navigation_graph" app:launchSingleTop="true"/>
+        <action
+            android:id="@+id/action_startFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/navigation_graph" />
     </fragment>
     <fragment android:id="@+id/addNewNote" android:name="ru.test.mvvmlearning.screens.addnewnote.AddNewNote"
               android:label="AddNewNote">
-        <action android:id="@+id/action_addNewNote_to_mainFragment" app:destination="@id/mainFragment"
-                app:popUpTo="@+id/navigation_graph" app:launchSingleTop="true"/>
+        <action
+            android:id="@+id/action_addNewNote_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:enterAnim="@anim/slide_right_to_left_enter"
+            app:exitAnim="@anim/slide_right_to_left_out"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/navigation_graph" />
     </fragment>
     <fragment android:id="@+id/noteFragment" android:name="ru.test.mvvmlearning.screens.note.NoteFragment"
               android:label="NoteFragment">
-        <action android:id="@+id/action_noteFragment_to_mainFragment" app:destination="@id/mainFragment"
-                app:popUpTo="@+id/navigation_graph" app:launchSingleTop="true"/>
+        <action
+            android:id="@+id/action_noteFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:enterAnim="@anim/slide_right_to_left_enter"
+            app:exitAnim="@anim/slide_right_to_left_out"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/navigation_graph" />
     </fragment>
 </navigation>
